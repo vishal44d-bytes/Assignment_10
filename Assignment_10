@@ -1,0 +1,26 @@
+from typing import List, Tuple
+def create_duplicate_array(wordAr: List[str]) -> List[Tuple[str, int]]:
+    dup_array = []
+    
+    for i, word in enumerate(wordAr):
+        
+        dup_array.append((word, i))
+    return dup_array
+
+
+def print_anagrams_together(wordArr: List[str]):
+   
+    dup_array = create_duplicate_array(wordArr)
+
+    for i in range(len(wordArr)):
+        dup_array[i] = (sorted(dup_array[i][0]), dup_array[i][1])
+    
+    dup_array.sort()
+
+    
+    for i in range(len(wordArr)):
+        print(wordArr[dup_array[i][1]], end=' ')
+
+wordArr = ["cat", "dog", "tac", "god", "act"]
+print_anagrams_together(wordArr)
+
